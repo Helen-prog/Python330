@@ -1,0 +1,112 @@
+index.html
+
+align = left | center | right | justify
+
+	h1
+h2
+		h3
+h4
+	h5
+		h6
+		
+
+Ctrl + /		
+<!-- Комментарий -->
+
+H20
+
+open in browser
+
+Ctrl + H
+align="
+style="text-align: 
+
+
+*.jpg (*.jpeg)
+*.png
+*.gif
+
+file:///D:/WEB326/HTML/form/form.html?name=Olga&psw=123456&pol=on#file.php
+file:///D:/WEB326/HTML/form/form.html#file.php
+
+
+  Создать web-страницу с адаптивным изображением
+  шапки и футера и адаптивным видео
+
+Montserrat 
+800
+700
+600
+500
+
+
+
+JSON - представление объектов JS (формат данных)
+
+
+http://f0844296.xsph.ru
+http://f0844296.xsph.ru/index1.html
+http://f0844296.xsph.ru/other.html
+
+
+AJAX – технология взаимодействия с сервером без перезагрузки страницы. Технологии AJAX уже более 20 лет.
+(появился в марте 1999 года)
+Asynchronous
+Javascript
+And
+XML (JSON)
+
+http://localhost/ajax
+http://localhost/ajax/new.html
+http://127.0.0.1
+
+current.json
+
+{
+	"current": {
+		"usd": 90
+	}
+}
+
+
+
+
+
+
+Win + R -> cmd
+python
+
+py
+
+1.py
+
+print('Hello world!')
+
+python 1.py
+py 1.py
+
+IDLE
+
+Ctrl + /
+
+import keyword
+keyword.kwlist
+
+0 - 9
+вонона - 1
+вороны - 2, 3, 4
+ворон - 5, 6, 7, 8, 9, 0
+
+условие ? true : false
+
+git --version
+git --help
+
+git init
+- создание репозитория
+
+git status
+- для просмотра в каком состоянии находится репозиторий
+
+git add main.py
+
