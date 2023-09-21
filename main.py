@@ -2541,6 +2541,9 @@
 # print(typed_fn3("Hello, ", "World", z=5))
 # # print(typed_fn3("Hello, ", "World", z="abc"))
 
+#
+# print("Новый код")
+# print("Еще код")
 
-print("Новый код")
-print("Еще код")
+print("Производим изменения на другом компьютере")
+
