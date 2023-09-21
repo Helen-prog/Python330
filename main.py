@@ -2501,42 +2501,46 @@
 #
 # fn(5)
 
-def typed(*args, **kwargs):
-    def wrapper(fn):
-        def wrap(*f_args, **f_kwargs):
-            for i in range(len(args)):
-                if type(f_args[i]) != args[i]:  # type(x) != int
-                    raise TypeError("Некорректный тип данных", f_args[i])
-            for k in kwargs:
-                if type(f_kwargs[k]) != kwargs[k]:
-                    raise TypeError("Некорректный тип данных")
+# def typed(*args, **kwargs):
+#     def wrapper(fn):
+#         def wrap(*f_args, **f_kwargs):
+#             for i in range(len(args)):
+#                 if type(f_args[i]) != args[i]:  # type(x) != int
+#                     raise TypeError("Некорректный тип данных", f_args[i])
+#             for k in kwargs:
+#                 if type(f_kwargs[k]) != kwargs[k]:
+#                     raise TypeError("Некорректный тип данных")
+#
+#             return fn(*f_args, **f_kwargs)
+#
+#         return wrap
+#
+#     return wrapper
+#
+#
+# @typed(int, int, int)
+# def typed_fn(x, y, z):
+#     return x * y * z
+#
+#
+# @typed(str, str, str)
+# def typed_fn2(x, y, z):
+#     return x + y + z
+#
+#
+# # @typed(str, str, z=int)
+# def typed_fn3(x, y, z="Hello! "):
+#     return (x + y) * z
+#
+#
+# print(typed_fn(3, 4, 5))
+# # print(typed_fn(3, 4, "Doge"))
+# # print(typed_fn(3.6, 4.5, 7.8))
+# print(typed_fn2("Hello, ", "World", "!"))
+# # print(typed_fn2(3, 4, 5))
+# print(typed_fn3("Hello, ", "World", z=5))
+# # print(typed_fn3("Hello, ", "World", z="abc"))
 
-            return fn(*f_args, **f_kwargs)
 
-        return wrap
-
-    return wrapper
-
-
-@typed(int, int, int)
-def typed_fn(x, y, z):
-    return x * y * z
-
-
-@typed(str, str, str)
-def typed_fn2(x, y, z):
-    return x + y + z
-
-
-# @typed(str, str, z=int)
-def typed_fn3(x, y, z="Hello! "):
-    return (x + y) * z
-
-
-print(typed_fn(3, 4, 5))
-# print(typed_fn(3, 4, "Doge"))
-# print(typed_fn(3.6, 4.5, 7.8))
-print(typed_fn2("Hello, ", "World", "!"))
-# print(typed_fn2(3, 4, 5))
-print(typed_fn3("Hello, ", "World", z=5))
-# print(typed_fn3("Hello, ", "World", z="abc"))
+print("Новый код")
+print("Еще код")
