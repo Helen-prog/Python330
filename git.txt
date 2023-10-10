@@ -103,10 +103,86 @@ git --version
 git --help
 
 git init
-- создание репозитория
+- создание репозитория (создается один раз в пределать одного репозитория)
 
 git status
 - для просмотра в каком состоянии находится репозиторий
 
 git add main.py
+		-A, --all - будут отслеживаться файлы, которые находится в папке и во всех подпапках
+		. - добавляет все файлы из текущей директории
+		
+git config --global user.name 'new user'
+git config --global user.email 'test@mail.ru'
+
+git commit -m "first commit"
+- создание контрольной точки
+
+.gitignore
+
+text.txt
+folder
+	test.txt
+	
+readme.md
+
+		
+git branch
+- показать ветки
+git branch test
+- созадать новую ветку
+
+git branch -D test
+- удалить ветку
+
+git branch readme
+git checkout readme
+- перейти на ветку
+
+git checkout master
+
+
+master               readme
+	main.py             main.py
+	readme.md			readme.md
+	new.py
+						
+git merge readme
+- слияние веток
+
+git branch -D readme
+
+git log
+- просмотр коммитов
+
+
+
+Токен: 
+
+
+Win + R -> control
+
+Диспечер учетных данных
+
+Учетные данные Windows
+
+https://github.com
+
+git remote add origin https://github.com/Helen-prog/Python330.git
+
+git push -u origin master
+
+e1be7fa24a32ca053adae7eaf7d6a7414d47fbbe
+
+git status
+1) git add .
+2) git commit -m "added print"
+3) git push
+
+git clone https://github.com/Helen-prog/Python330.git
+- склонировать репозиторий
+
+git pull
+- забрать данные с gitHub
+
 
