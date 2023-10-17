@@ -3461,12 +3461,404 @@ import time
 #
 # print(sum_list([1, 3, 5, 7, 9]))  # 25
 
-def to_str(n, base):
-    convert = "0123456789ABCDEF"
-    if n < base:
-        return convert[n]
-    else:
-        return to_str(n // base, base) + convert[n % base]
+
+# import re
+#
+# s = '+7 499 456-45-78 , +74994564578 , 7 (499) 456 45 78 , 7 (499) 456-45-78'
+# reg = r'\+?7\s*\(?\d+\)?\s*\d+[- ]?\d+[- ]?\d+'
+# print(re.findall(reg, s))
+
+# def to_str(n, base):  # 15
+#     convert = "0123456789ABCDEF"
+#     if n < base:  # 15 < 16
+#         return convert[n]  # convert[15] => 'F'
+#     else:
+#         return to_str(n // base, base) + convert[n % base]  # to_str(15, 16)  # convert[254 % 16] => (14) 'E'
+#
+#
+# print(to_str(254, 16))
+
+# names = ["Adam", ["Bob", ["Chet", "Cat"], "Bard", "Bert"], "Alex", ["Bea", "Bill"], "Ann"]
+# print(names)
+#
+#
+# # print(len(names))
+# # print(names[1])
+# # print(isinstance(names[1], list))
+# # print(names[1][1])
+# # print(isinstance(names[1][1], list))
+# # print(names[1][1][0])
+# # print(isinstance(names[1][1][0], list))
+# def count_items(item_list):   # ['Adam', ['Bob', ['Chet', 'Cat'], 'Bard', 'Bert'], 'Alex',
+#     # ['Bea', 'Bill'], 'Ann']
+#     count = 0  # 10
+#     for item in item_list:
+#         if isinstance(item, list):
+#             count += count_items(item)
+#         else:
+#             count += 1
+#     return count
+#
+#
+# print(count_items(names))
 
 
-print(to_str(255, 10))
+# def remove(text):  # " "
+#     if not text:  # ""
+#         return ""
+#     if text[0] == "\t" or text[0] == " " or text[0] == "!":
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])  # 'HelloWorld'
+#
+#
+# print(remove(" Hel!!lo\tWor!!!ld "))
+
+# print(bool(""))
+
+
+# class Point:
+#     x = 1
+#     y = 2
+#
+#
+# p1 = Point()
+# print(p1.x)
+# print(p1.y)
+# p1.x = 5
+# p1.y = 7
+# p1.z = 3
+# print(p1.x)
+# print(p1.y)
+# print(p1.__dict__)
+# # print(type(p1))
+# p2 = Point()
+# print(p2.x)
+# print(p2.y)
+# print(p2.__dict__)
+
+# print(id(Point.x))  # 2947684560624
+# print(id(p1.x))     # 2947685777360
+# print(id(p2.x))     # 2947685777264
+
+
+# class Point:
+#     x = 1
+#     y = 2
+#
+#     def set_coord(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point()
+# # p1.set_coord(5, 10)
+# Point.set_coord(p1, 5, 10)
+# print(p1.__dict__)
+#
+# p2 = Point()
+# # p2.x = 3
+# # p2.y = 7
+# p2.set_coord(3, 7)
+# print(p2.__dict__)
+
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = "00-00-00"
+#     country = "country"
+#     city = "city"
+#     address = 'street, house'
+#
+#     def print_info(self):
+#         print(" Персональные данные ".center(40, "*"))
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\nСтрана: "
+#               f"{self.country}\nГород: {self.city}\nДомашний адрес: {self.address}")
+#         print("=" * 40)
+#
+#     def input_info(self, first_name, birthday, phone, country, city, address):
+#         self.name = first_name
+#         self.address = address
+#         self.birthday = birthday
+#         self.phone = phone
+#         self.country = country
+#         self.city = city
+#
+#     def set_phone(self, phone):  # устанавливает значение
+#         self.phone = phone
+#
+#     def get_phone(self):  # получает значение
+#         return self.phone
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1А")
+# h1.print_info()
+# h1.set_phone("55-99-33")
+# print(h1.get_phone())
+# h1.set_name("Валерия")
+# print(h1.get_name())
+
+
+# class Person:
+#     skill = 10
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#         print("Инициализатор класса Person")
+#
+#     def __del__(self):
+#         print("Удаление экземпляра класса")
+#
+#     def print_info(self):
+#         print("Данные сотрудника:", self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Квалификация сотрудника:", self.skill, "\n")
+#
+#
+# p1 = Person("Виктор", "Резник")
+# p1.print_info()
+# # p1 = 0
+# p1.add_skill(3)
+# # del p1
+#
+#
+# p2 = Person("Анна", "Долгих")
+# p2.print_info()
+# p2.add_skill(2)
+
+# import os
+#
+# dir_name = "nested1"
+#
+# objs = os.listdir(dir_name)
+# print(objs)
+#
+# for obj in objs:
+#     p = os.path.join(dir_name, obj)
+#     if os.path.isfile(p):
+#         print(f"{obj} - file - {os.path.getsize(p)} bytes")
+#     elif os.path.isdir(p):
+#         print(f"{obj} - dir")
+
+
+# class Point:
+#     count = 0  # 1 2 3
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         Point.count += 1
+#
+#
+# p1 = Point(5, 10)
+# p2 = Point(2, 8)
+# p3 = Point(7, 12)
+# print(p1.count)
+# # print(p2.count)
+# # print(p3.count)
+# print(Point.count)
+# print(p1.x)
+
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print(f"Инициализация робота: {self.name}")
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(f"{self.name} выключается!")
+#         Robot.k -= 1
+#         if Robot.k == 0:
+#             print(f"{self.name} был последним")
+#         else:
+#             print(f"Работающих роботов осталось: {Robot.k}")
+#
+#     def say_hi(self):
+#         print(f"Приветствую! Меня зовут {self.name}")
+#
+#
+# droid1 = Robot("R2-D2")
+# droid1.say_hi()
+# print(f"Численность роботов: {Robot.k}")
+#
+# droid2 = Robot("C-3PO")
+# droid2.say_hi()
+# print(f"Численность роботов: {Robot.k}")
+#
+# droid3 = Robot("P-PO3")
+# droid3.say_hi()
+# print(f"Численность роботов: {Robot.k}")
+#
+# print("\nЗдесь роботы могут проделать какую-то работу\n")
+#
+# print("Роботы закончили свою работу. Давайте их выключим")
+# del droid1  # Здесь __del__ droid1
+# del droid2  # Здесь __del__ droid2
+# del droid3  # Здесь __del__ droid3
+# print(f"Численность роботов: {Robot.k}")
+
+
+# class Point:
+#     __slots__ = ["__x", "__y"]
+#
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x  # _Point__x
+#             self.__y = y  # _Point__y
+#
+#     def __check_value(s):  # _Point__check_value
+#         if isinstance(s, int) or isinstance(s, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):  # установили новые координаты
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_coord(self):  # получили координаты
+#         return self.__x, self.__y
+#
+#     def set_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_x(self):
+#         return self.__x
+#
+#     def set_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_y(self):
+#         return self.__y
+#
+#
+# p1 = Point(5, 10)
+# # print(p1.__x, p1.__y)
+# # p1.x = 100
+# # p1.__y = "abc"
+# # print(p1.x, p1.__y)
+#
+# # p1.set_coord(100.2, 200.4)
+# # print(p1.__dict__)
+# # print(p1.get_coord())
+# # # print(Point.__dict__)
+# # # p1.__check_value(5)
+# # p1.set_x(50)
+# # print(p1.get_x())
+# # p1.set_y(70)
+# # print(p1.get_y())
+# # print(p1._Point__x)
+# # p1._Point__x = "abc"
+# # print(p1.__dict__)
+# print(p1.get_coord())
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __set_x(self, x):
+#         if isinstance(x, (int, float)):
+#             self.__x = x
+#         else:
+#             raise ValueError("Неверный формат данных")
+#
+#     def __get_x(self):
+#         return self.__x
+#
+#     def __del_x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     x = property(__get_x, __set_x, __del_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.x = 3
+# print(p1.x)
+# del p1.x
+# print(p1.__dict__)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     @property
+#     def x(self):
+#         return self.__x
+#
+#     @x.deleter
+#     def x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     @x.setter
+#     def x(self, x):
+#         if isinstance(x, (int, float)):
+#             self.__x = x
+#         else:
+#             raise ValueError("Неверный формат данных")
+#
+#     # x = property(__get_x, __set_x, __del_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.x = 3
+# print(p1.x)
+# del p1.x
+# print(p1.__dict__)
+
+class KgToPounds:
+    def __init__(self, kg):
+        if isinstance(kg, (int, float)):
+            self.__kg = kg
+        else:
+            self.kg = 0
+
+    @property
+    def kg(self):
+        return self.__kg
+
+    @kg.setter
+    def kg(self, new_kg):
+        if isinstance(new_kg, (int, float)):
+            self.__kg = new_kg
+        else:
+            print("Килограммы задаются только числами")
+
+    def to_pounds(self):
+        return self.__kg * 2.205
+
+
+weight = KgToPounds(12)
+print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
+weight.kg = 41
+print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
+weight.kg = 'десять'
+print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
