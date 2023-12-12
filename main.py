@@ -7144,12 +7144,12 @@ import sqlite3
 #     cur.execute("DROP TABLE users")
 
 
-with sqlite3.connect("users.db") as con:
-    cur = con.cursor()
-
-    cur.execute("""
-    DROP TABLE person_table
-    """)
+# with sqlite3.connect("users.db") as con:
+#     cur = con.cursor()
+#
+#     cur.execute("""
+#     DROP TABLE person_table
+#     """)
 
     # cur.execute("""
     # ALTER TABLE person_table
@@ -7180,6 +7180,50 @@ with sqlite3.connect("users.db") as con:
     # )""")
 
 
+# with sqlite3.connect("db_3.db") as con:
+#     cur = con.cursor()
+    # cur.execute("""
+    #     SELECT *
+    #     FROM T1
+    #     LIMIT 2, 5;
+    # """)
 
+    # res = cur.fetchone()
+    # print(res)
+    # res2 = cur.fetchmany(2)
+    # print(res2)
+    # res3 = cur.fetchall()
+    # print(res3)
 
+    # for i in cur:
+    #     print(i)
 
+with sqlite3.connect("education.db") as con:
+    cur = con.cursor()
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS student(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        surname TEXT NOT NULL,
+        name TEXT NOT NULL,
+        patronymic TEXT NOT NULL,
+        age INTEGER NOT NULL CHECK(age >= 16 AND age <= 45),
+        [group] TEXT NOT NULL,
+        FOREIGN KEY ([group]) REFERENCES groups (id) ON DELETE RESTRICT
+    )""")
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS groups(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        group_name TEXT NOT NULL
+    )""")
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS lessons(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        lesson_title TEXT NOT NULL
+    )""")
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS association (
+        lesson_id INTEGER NOT NULL,
+        group_id INTEGER NOT NULL,
+        FOREIGN KEY (group_id) REFERENCES groups(id)
+        FOREIGN KEY (lesson_id) REFERENCES lessons(id)
+    )""")

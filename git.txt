@@ -331,6 +331,9 @@ WHERE условие
 	выражение IS 
 	выражение [NOT] IN (набор_значений | выражение)
 ORDER BY col_name | col_number [ASC | DESC], ...
+LIMIT количество_срок [OFFSET смещение]
+
+LIMIT [смещение,] количество_строк
 	
 	
 3. Показать атрибуты с фамилиями и зарплатой.
@@ -351,6 +354,14 @@ FROM список_таблиц
 WHERE условие
 
 
+UPDATE имя_таблицы
+SET столбец_1=значение_1, столбец_2=значение_2
+[WHERE условие]
+
+
+DELETE FROM имя_таблицы
+[WHERE условие]
+
 
 8. Вывести коды всех продавцов заказчики, которых работают в городе Москва и не живут там.
 
@@ -368,6 +379,94 @@ WHERE условие
 14. Определите города, в которых продают стулья или столы для ПК.
 
 15. Определите коды продавцов, работающих по доверенности с заказчиками, живущими в Москве и имеющими рейтинг менее  190 пунктов.
+
+
+Логическая база данных
+Физическая база данных
+
+
+Функции агрегирования
+SUM  (только числа)
+AVG  (только числа)
+COUNT
+MIN
+MAX
+
+
+FOREIGN KEY (столбец_1, столбец_2)
+REFERENCES таблица_1(столбец_1, столбец_2)
+[ON DELETE действие]
+[ON UPDATE действие]
+
+
+companies 				users
+id                      id
+name					name
+						age	
+						company_id
+						
+CASCADE - автоматически удаляет или изменяет строки из зависимой таблицы
+при удалении или изменении связанных строк в главной таблице
+
+SET NULL - при удалении или обновлении связанной строки из главной таблицы  
+устанавливает для столбца внешнего ключа значение NULL
+
+RESTRICT (NO ACTION) - отклоняет удаление или изменение в главной таблице при наличии связанных строк в зависимой таблице
+
+SET DEFAULT - при удалении связанной строки из главной таблицы устанавливает для столбца внешнего ключа значение по умолчанию, которое задается с помощью атрибута DEFAULT
+
+
+CREATE TABLE companies(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+CREATE TABLE users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    age INTEGER,
+    company_id INTEGER,
+    FOREIGN KEY (company_id) REFERENCES companies(id) ON DELETE CASCADE
+);
+
+books					
+id
+title
+count_page
+price
+
+
+author_books
+id
+books_id
+author_id
+
+
+author
+id
+name
+age
+	
+
+CREATE TABLE books(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    count_page INTEGER NOT NULL CHECK (count_page > 0),
+    price REAL CHECK (price > 0)
+);
+
+CREATE TABLE author(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    age INTEGER CHECK (age > 16)
+);
+
+CREATE TABLE author_books(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    book_id INTEGER NOT NULL,
+    author_id INTEGER NOT NULL,
+    FOREIGN KEY (book_id) REFERENCES books(id)
+    FOREIGN KEY (author_id) REFERENCES author(id)
+);	
 
 
 
