@@ -7123,7 +7123,7 @@ import time
 #     run()
 
 
-import sqlite3
+# import sqlite3
 
 # con = sqlite3.connect("profile.db")
 # cur = con.cursor()
@@ -7151,79 +7151,233 @@ import sqlite3
 #     DROP TABLE person_table
 #     """)
 
-    # cur.execute("""
-    # ALTER TABLE person_table
-    # RENAME COLUMN address TO home_address;
-    # """)
+# cur.execute("""
+# ALTER TABLE person_table
+# RENAME COLUMN address TO home_address;
+# """)
 
-    # cur.execute("""
-    # ALTER TABLE person_table
-    # DROP COLUMN address
-    # """)
+# cur.execute("""
+# ALTER TABLE person_table
+# DROP COLUMN address
+# """)
 
-    # cur.execute("""
-    # ALTER TABLE person_table
-    # ADD COLUMN address TEXT NOT NULL DEFAULT "city, street"
-    # """)
+# cur.execute("""
+# ALTER TABLE person_table
+# ADD COLUMN address TEXT NOT NULL DEFAULT "city, street"
+# """)
 
-    # cur.execute("""
-    # ALTER TABLE person
-    # RENAME TO person_table;
-    # """)
+# cur.execute("""
+# ALTER TABLE person
+# RENAME TO person_table;
+# """)
 
-    # cur.execute("""CREATE TABLE IF NOT EXISTS person(
-    # id INTEGER PRIMARY KEY AUTOINCREMENT,
-    # name TEXT NOT NULL,
-    # phone BLOB NOT NULL DEFAULT "+79090000000",
-    # age INTEGER CHECK(age > 0 AND age < 100),
-    # email TEXT UNIQUE
-    # )""")
+# cur.execute("""CREATE TABLE IF NOT EXISTS person(
+# id INTEGER PRIMARY KEY AUTOINCREMENT,
+# name TEXT NOT NULL,
+# phone BLOB NOT NULL DEFAULT "+79090000000",
+# age INTEGER CHECK(age > 0 AND age < 100),
+# email TEXT UNIQUE
+# )""")
 
 
 # with sqlite3.connect("db_3.db") as con:
 #     cur = con.cursor()
-    # cur.execute("""
-    #     SELECT *
-    #     FROM T1
-    #     LIMIT 2, 5;
-    # """)
+# cur.execute("""
+#     SELECT *
+#     FROM T1
+#     LIMIT 2, 5;
+# """)
 
-    # res = cur.fetchone()
-    # print(res)
-    # res2 = cur.fetchmany(2)
-    # print(res2)
-    # res3 = cur.fetchall()
-    # print(res3)
+# res = cur.fetchone()
+# print(res)
+# res2 = cur.fetchmany(2)
+# print(res2)
+# res3 = cur.fetchall()
+# print(res3)
 
-    # for i in cur:
-    #     print(i)
+# for i in cur:
+#     print(i)
 
-with sqlite3.connect("education.db") as con:
-    cur = con.cursor()
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS student(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        surname TEXT NOT NULL,
-        name TEXT NOT NULL,
-        patronymic TEXT NOT NULL,
-        age INTEGER NOT NULL CHECK(age >= 16 AND age <= 45),
-        [group] TEXT NOT NULL,
-        FOREIGN KEY ([group]) REFERENCES groups (id) ON DELETE RESTRICT
-    )""")
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS groups(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        group_name TEXT NOT NULL
-    )""")
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS lessons(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        lesson_title TEXT NOT NULL
-    )""")
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS association (
-        lesson_id INTEGER NOT NULL,
-        group_id INTEGER NOT NULL,
-        FOREIGN KEY (group_id) REFERENCES groups(id)
-        FOREIGN KEY (lesson_id) REFERENCES lessons(id)
-    )""")
+# with sqlite3.connect("education.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS student(
+#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         surname TEXT NOT NULL,
+#         name TEXT NOT NULL,
+#         patronymic TEXT NOT NULL,
+#         age INTEGER NOT NULL CHECK(age >= 16 AND age <= 45),
+#         [group] TEXT NOT NULL,
+#         FOREIGN KEY ([group]) REFERENCES groups (id) ON DELETE RESTRICT
+#     )""")
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS groups(
+#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         group_name TEXT NOT NULL
+#     )""")
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS lessons(
+#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         lesson_title TEXT NOT NULL
+#     )""")
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS association (
+#         lesson_id INTEGER NOT NULL,
+#         group_id INTEGER NOT NULL,
+#         FOREIGN KEY (group_id) REFERENCES groups(id)
+#         FOREIGN KEY (lesson_id) REFERENCES lessons(id)
+#     )""")
+
+
+import sqlite3
+
+
+# cars = [
+#     ('BMW', 54000),
+#     ('Chevrolet', 46000),
+#     ('Daewoo', 38000),
+#     ('Citroen', 29000),
+#     ('Honda', 33000),
+# ]
+#
+# with sqlite3.connect("cars.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS car(
+#          car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#          model TEXT,
+#          price INTEGER
+#     )
+#     """)
+#
+#     cur.executescript("""
+#     DELETE FROM car WHERE model LIKE 'B%';
+#     UPDATE car SET price = price + 100;
+#     """)
+
+# cur.execute("UPDATE car SET price = :Price WHERE model LIKE 'B%'", {'Price': 0})
+
+# cur.executemany("INSERT INTO car VALUES(NULL, ?, ?)", cars)
+
+# for car in cars:
+#     cur.execute("INSERT INTO car VALUES(NULL, ?, ?)", car)
+
+# cur.execute("INSERT INTO car VALUES(1, 'Renault', 22000)")
+# cur.execute("INSERT INTO car VALUES(2, 'Volvo', 29000)")
+# cur.execute("INSERT INTO car VALUES(3, 'Mercedes', 57000)")
+# cur.execute("INSERT INTO car VALUES(4, 'Bentley', 35000)")
+# cur.execute("INSERT INTO car VALUES(5, 'Audi', 52000)")
+
+# con.commit()
+# con.close()
+
+# con = None
+# try:
+#     con = sqlite3.connect("cars.db")
+#     cur = con.cursor()
+#     cur.executescript("""
+#     CREATE TABLE IF NOT EXISTS car(
+#          car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#          model TEXT,
+#          price INTEGER
+#     );
+#     BEGIN;
+#     INSERT INTO car VALUES(NULL, 'Renault', 22000);
+#     UPDATE car2 SET price = price + 100;
+#     """)
+#     con.commit()
+# except sqlite3.Error as e:
+#     if con:
+#         con.rollback()
+#     print("Ошибка выполнения запроса", e)
+# finally:
+#     if con:
+#         con.close()
+
+# with sqlite3.connect("cars.db") as con:
+#     con.row_factory = sqlite3.Row
+#     cur = con.cursor()
+#     cur.executescript("""
+#     CREATE TABLE IF NOT EXISTS car(
+#          car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#          model TEXT,
+#          price INTEGER
+#     );
+#     CREATE TABLE IF NOT EXISTS cost(
+#         name TEXT, tr_in INTEGER, buy INTEGER
+#     )
+#     """)
+
+# cur.execute("SELECT model, price FROM car")
+# for res in cur:
+#     print(res['model'], res['price'])
+# row = cur.fetchone()
+# print(row)
+# row2 = cur.fetchmany(5)
+# print(row2)
+# row3 = cur.fetchall()
+# print(row3)
+
+
+# cur.execute("INSERT INTO car VALUES(NULL, 'Запорожец', 1000)")
+# last_row_id = cur.lastrowid
+# buy_car_id = 2
+# cur.execute("INSERT INTO cost VALUES('Илья', ?, ?)", (last_row_id, buy_car_id))
+
+# def read_ava(n):
+#     try:
+#         with open(f"avatars/{n}.png", "rb") as f:
+#             return f.read()
+#     except IOError as e:
+#         print(e)
+#         return False
+#
+#
+# def write_ava(name, data):
+#     try:
+#         with open(name, "wb") as f:
+#             f.write(data)
+#     except IOError as e:
+#         print(e)
+#         return False
+#     return True
+#
+#
+# with sqlite3.connect("cars.db") as con:
+#     con.row_factory = sqlite3.Row
+#     cur = con.cursor()
+#     cur.executescript("""
+#     CREATE TABLE IF NOT EXISTS users(
+#        name TEXT,
+#        ava BLOB,
+#        score INTEGER
+#     );
+#     """)
+#
+#     # cur.execute("SELECT ava FROM users")
+#     # img = cur.fetchone()['ava']
+#     # write_ava("out.png", img)
+#
+#     img = read_ava(2)
+#     if img:
+#         binary = sqlite3.Binary(img)
+#         cur.execute("INSERT INTO users VALUES('Илья', ?, 1000)", (binary,))
+
+
+# with sqlite3.connect("cars.db") as con:
+#     cur = con.cursor()
+#
+#     with open("sql_dump.sql", "w") as f:
+#         for sql in con.iterdump():
+#             f.write(sql)
+
+# with sqlite3.connect("cars.db") as con:
+#     cur = con.cursor()
+#
+#     with open("sql_dump.sql", "r") as f:
+#         sql = f.read()
+#         cur.executescript(sql)
+
+# ORM
+
+# pip install sqlalchemy
