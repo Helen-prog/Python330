@@ -497,9 +497,25 @@ CREATE TABLE author_books(
 
 16.	Выведите перечень специальностей физико-математического факультета.
 
+EXISTS
+UNION, UNION ALL
 
+SELECT столбцы
+FROM таблица1 [INNER] JOIN таблица2
+ON условие
 
+SELECT столбцы
+FROM таблица1 LEFT | RIGHT JOIN таблица2
+ON условие
+ORDER BY столбец;
 
+models
+	__init__.py
+	database.py
+	student.py
+	group.py
+	lesson.py
+	
 
 
 
