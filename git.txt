@@ -515,7 +515,68 @@ models
 	student.py
 	group.py
 	lesson.py
+create_database.py
 	
+	
+pip install faker
 
+Jinja
+
+pip install jinja2
+
+{{ переменные }}
+{% выражения %}
+	
+cars = [
+	{'model': 'Audi', 'price': 23000},
+	{'model': 'Skoda', 'price': 17300},
+	{'model': 'Renault', 'price': 44300},
+	{'model': 'Wolksvagen', 'price': 21300}
+]
+
+persons = [
+	{"name": "Алексей", "year": 18, "weight": 78.5},
+	{"name": "Никита", "year": 28, "weight": 82.3},
+	{"name": "Виталий", "year": 33, "weight": 94.0}
+]
+
+template
+	index.html
+	header.html
+	main.html
+	footer.html
+	dialogs.html
+	
+	page.html
+	about.html
+	
+	
+Flask
+Django
+
+pip install flask
+
+flsk
+	flsite.py
+	
+	
+templates
+	index.html
+	about.html
+	base.html
+	contact.html
+static
+	css
+		style.css
+		
+
+http://127.0.0.1:5000/profile/admin/2
+
+int - только целые числа
+float - только вещественные числа
+path - только допустимые символы url + "/"
+
+
+http://127.0.0.1:5000/contact?username=admin&email=igor%40gmail.com&message=
 
 
