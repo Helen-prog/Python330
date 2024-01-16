@@ -559,12 +559,14 @@ pip install flask
 flsk
 	flsite.py
 	
-	
+
+FDataBase.py	
 templates
 	index.html
 	about.html
 	base.html
 	contact.html
+	login.html
 static
 	css
 		style.css
@@ -579,4 +581,13 @@ path - только допустимые символы url + "/"
 
 http://127.0.0.1:5000/contact?username=admin&email=igor%40gmail.com&message=
 
+flash
+get_flashed_messages
 
+http://127.0.0.1:5000/login/
+
+import os
+os.urandom(20).hex()
+
+from flsk.flsite import create_db
+create_db()
