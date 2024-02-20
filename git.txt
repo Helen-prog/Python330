@@ -706,3 +706,8 @@ quit()
 Ataur
 &ataur123456
 
+http://127.0.0.1:8000/?search_query=gor
+http://127.0.0.1:8000/projects/?page=5
+
+utils.py
+
