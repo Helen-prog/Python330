@@ -664,7 +664,7 @@ python manage.py createsuperuser
  <p>Помогает находить слабые стороны в работе сотрудников и улучшать уровень обслуживания клиентов.</p> 
 
 models.CASCADE - если пользователь будет удален, то удалятся все его задачи
-models.PROTECTED - запрещает удалять пользователя, пока у него есть задачи
+models.PROTECT - запрещает удалять пользователя, пока у него есть задачи
 models.SET_NULL - задачи останутся в базе, даже при удалениии пользователя, но значение в поле задачи изменится на Null
 models.SET_DEFAULT - задачи останутся в базе, даже при удалениии пользователя, но значение в поле задачи изменится на значение по умолчанию
 
@@ -711,3 +711,39 @@ http://127.0.0.1:8000/projects/?page=5
 
 utils.py
 
+pagination.html
+
+http://127.0.0.1:8000/projects/?search_query=web
+http://127.0.0.1:8000/projects/?page=2
+
+http://127.0.0.1:8000/projects/?search_query=web&page=2
+
+http://127.0.0.1:8000/projects/?search_query=web&page=2
+
+http://127.0.0.1:8000/projects/?search_query=web
+http://127.0.0.1:8000/projects/?search_query=web&page=2
+http://127.0.0.1:8000/projects/?search_query=web&page=3
+
+http://127.0.0.1:8000/projects/?search_query=page
+http://127.0.0.1:8000/projects/?search_query=page&page=2
+
+
+
+message_form.html
+
+django-admin startproject programming_blog
+python manage.py startapp blog
+
+
+str - любая непустая строка, исключая символ "/"
+int - любое положительное число, включая 0
+slug - буквы латинского алфавита, символ дефиса и подчеркивания
+uuid - цифры, буквы латинского алфавита, дефис
+path - любая непустая строка, включая символ "/"
+
+
+inclusion tags - включающие теги
+templatetags
+	__init__.py
+	blog_tags.py
+	
