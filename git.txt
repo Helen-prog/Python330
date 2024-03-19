@@ -747,3 +747,47 @@ templatetags
 	__init__.py
 	blog_tags.py
 	
+utils.py
+
+http://127.0.0.1:8000/
+
+
+git init
+git add -A
+git commit -m "blog"
+
+git push -u origin master
+
+git clone https://github.com/Helen-prog/blog.git
+
+mkvirtualenv --python=/usr/bin/python3.10 blogvenv
+mkvirtualenv --python=/usr/bin/python3.9 blogvenv
+
+deactivate
+- для выхода из виртуального окружения
+
+workon blogvenv
+- для повторного входа
+
+pip install django
+pip install pillow
+pip install django-simple-captcha
+pip install django-ckeditor
+
+/home/HelenKozovyakina/blog
+/home/HelenKozovyakina/blog/static
+/home/HelenKozovyakina/blog/media
+
+
+python manage.py collectstatic
+
+http://helenkozovyakina.pythonanywhere.com/
+https://helenkozovyakina.pythonanywhere.com/
+
+
+django-admin startproject landing_page
+python manage.py startapp cms
+python manage.py startapp price
+python manage.py startapp crm
+
+

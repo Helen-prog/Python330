@@ -1,0 +1,7 @@
+#header, body, #nav-sidebar, .module, #changelist .actions{
+    background: #446600 !important;
+}
+
+a:link, a:visited{
+    color: #00ff2f;
+}
