@@ -812,5 +812,7 @@ https://api.telegram.org/bot6989841441:AAHfWaj5YaF_1uK6CDuo9JEIe1vVpgvqTAc/sendM
 
 django-admin startproject shop
 python manage.py startapp products
+python manage.py startapp users
+
 
 
