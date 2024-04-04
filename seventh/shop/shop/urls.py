@@ -18,11 +18,32 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('products.urls')),
     path('users/', include('users.urls')),
+
+    # для сброса пароля
+    path('reset_password/', auth_views.PasswordResetView.as_view(template_name="users/reset_password.html"),
+         name='reset_password'),
+    # для отправления пароля на почту
+    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(
+        template_name="users/reset_password_sent.html"), name='password_reset_done'),
+    #   письмо со ссылкой и инструкциями по сбросу
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    # сообщение об успешном сбросе пароля
+    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
+    # # пользователь отправляет электронное письмо для сброса
+    # path("reset-password/", auth_views.PasswordResetView.as_view(), name='reset_password'),
+    # # сообщение отравленное по электронной почте
+    # path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    # # электронное письмо со ссылкой и инструкциями по сбросу
+    # path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    # # сообщение об успешном сбросе пароля
+    # path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset-complete'),
 ]
 
 if settings.DEBUG:
