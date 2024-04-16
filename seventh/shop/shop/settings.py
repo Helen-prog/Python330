@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products.apps.ProductsConfig',
     'users.apps.UsersConfig',
+    'orders.apps.OrdersConfig',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'products.context_processors.baskets',
             ],
         },
     },
@@ -76,10 +79,18 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "store_shop_db",
+        "USER": "user_store1",
+        "PASSWORD": "store_shop",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
 
 
@@ -138,3 +149,5 @@ EMAIL_HOST_USER = 'store.shop.catalog@gmail.com'
 EMAIL_HOST_PASSWORD = 'nezigodhmrxdonlr'
 
 DOMAIN_NAME = 'http://127.0.0.1:8000'
+
+LOGIN_URL = '/users/login'

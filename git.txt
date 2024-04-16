@@ -813,8 +813,36 @@ https://api.telegram.org/bot6989841441:AAHfWaj5YaF_1uK6CDuo9JEIe1vVpgvqTAc/sendM
 django-admin startproject shop
 python manage.py startapp products
 python manage.py startapp users
+python manage.py startapp orders
 
 
 https://myaccount.google.com/
 
+reset.html
+reset_password_complete.html
 
+
+SQL Shell (psql)
+
+\! chcp 1251
+DROP DATABASE store_shop_db; - для удаления БД
+
+postgres - пользователь
+
+store_shop_db - база данных
+user_store1 - пользователь БД
+store_shop - пароль для БД
+
+
+CREATE DATABASE store_shop_db;
+\c store_shop_db
+CREATE ROLE user_store1 with password 'store_shop';
+ALTER ROLE "user_store1" WITH LOGIN;
+GRANT ALL PRIVILEGES ON DATABASE "store_shop_db" to user_store1;
+ALTER USER user_store1 CREATEDB;
+
+grant usage on schema public to public;
+grant create on schema public to public;
+
+
+pip install psycopg2
